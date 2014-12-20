@@ -13,7 +13,37 @@ angular.module('moped.radio', [
       return JSON.parse(stationsFromStorage);
     }
     else {
-      return [];
+      return [{
+        "name": "mth.house",
+        "uri": "http://house.mthn.net:8500"
+      },
+      {
+        "name": "mth.main",
+        "uri": "http://main.mthn.net:8000"
+      },
+      {
+        "name": "YouFM",
+        "uri": "http://hr-mp3-m-youfm.akacast.akamaistream.net/7/246/142136/v1/gnl.akacast.akamaistream.net/hr-mp3-m-youfm"
+      },
+      {
+        "name": "Rautemusik.fm Main",
+        "uri": "http://main-high.rautemusik.fm"
+      },
+      {
+        "name": "Rautemusik.fm Charthits",
+        "uri": "http://charthits-high.rautemusik.fm"
+      },
+      {
+        "name": "Rautemusik.fm Rock",
+        "uri": "http://rock-high.rautemusik.fm"
+      },
+      {
+        "name": "Housetime.fm",
+        "uri": "http://listen.housetime.fm/tunein-mp3-pls"
+      },{
+        "name": "SWR3",
+        "uri": "http://swr-mp3-m-swr3.akacast.akamaistream.net/7/720/137136/v1/gnl.akacast.akamaistream.net/swr-mp3-m-swr3"
+      }]; 
     }
   }
 
