@@ -135,10 +135,10 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.playback.seek", this)({ time_position: timePosition });
       },
       getVolume: function() {
-        return wrapMopidyFunc("mopidy.playback.getVolume", this)();
+        return wrapMopidyFunc("mopidy.mixer.getVolume", this)();
       },
       setVolume: function(volume) {
-        return wrapMopidyFunc("mopidy.playback.setVolume", this)({ volume: volume });
+        return wrapMopidyFunc("mopidy.mixer.setVolume", this)({ volume: volume });
       },
       getState: function() {
         return wrapMopidyFunc("mopidy.playback.getState", this)();
@@ -154,21 +154,18 @@ angular.module('moped.mopidy', [])
           });
           if (_.difference(trackUris, currentTrackUris).length === 0) {
             // no playlist change required, just play a different track.
-            self.mopidy.playback.stop({ clear_current_track: false })
+            self.mopidy.playback.stop()
               .then(function () {
                 var tlTrackToPlay = _.find(self.currentTlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
-                  .then(function() {
-                    self.mopidy.playback.play();
-                  });
+                self.mopidy.playback.play({ tl_track: tlTrackToPlay });
               });
             return;
           }
         }
 
-        self.mopidy.playback.stop({ clear_current_track: true })
+        self.mopidy.playback.stop()
           .then(function() {
             self.mopidy.tracklist.clear();
           }, consoleError)
@@ -182,10 +179,7 @@ angular.module('moped.mopidy', [])
                 var tlTrackToPlay = _.find(tlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
-                  .then(function() {
-                    self.mopidy.playback.play();
-                  });
+                self.mopidy.playback.play({ tl_track: tlTrackToPlay });
               }, consoleError);
           } , consoleError);
       },
@@ -210,7 +204,7 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.playback.pause", this)();
       },
       stopPlayback: function(clearCurrentTrack) {
-        return wrapMopidyFunc("mopidy.playback.stop", this)({ clear_current_track: clearCurrentTrack });
+        return wrapMopidyFunc("mopidy.playback.stop", this)();
       },
       previous: function() {
         return wrapMopidyFunc("mopidy.playback.previous", this)();

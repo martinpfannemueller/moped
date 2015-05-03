@@ -9,7 +9,7 @@ Moped is response HTML5 + JavaScript client for the `Mopidy <http://www.mopidy.c
 Installation
 ============
 
-Make sure to have Mopidy 0.19 or higher `installed <http://docs.mopidy.com/en/latest/installation/>`_ on your music server. Also make sure that the `HTTP extension <http://docs.mopidy.com/en/latest/ext/http/>`_ is enabled. 
+Make sure to have Mopidy 1.0.0 or higher `installed <http://docs.mopidy.com/en/latest/installation/>`_ on your music server. Also make sure that the `HTTP extension <http://docs.mopidy.com/en/latest/ext/http/>`_ is enabled. 
 
 Install from PyPI on your music server::
 
@@ -70,12 +70,47 @@ and to build the Mopidy extension::
 Project resources
 =================
 
-- `Source code <https://github.com/martijnboland/moped/angular>`_
+- `Source code <https://github.com/martijnboland/moped>`_
 - `Issue tracker <https://github.com/martijnboland/moped/issues>`_
 - `Download development snapshot <https://github.com/martijnboland/moped/tarball/master#egg=Mopidy-Moped-dev>`_
 
 Changelog
 =========
+
+0.5.0 (2015-04-05)
+------------------
+
+Updated mopidy.js to 0.5.0
+Mopidy 1.0.0 compatibility
+Updated player controls active and hover styles (Sebastian) 
+
+0.4.4 (2015-03-14)
+------------------
+
+Fixed search
+
+0.4.3 (2015-03-14)
+------------------
+
+Min. characters for search is now 2 instead of 3
+Use protocol relative urls for fonts (André Gaul)
+Updated Angular to 1.3.x
+Updated various other js libs to latest version
+Try to display Mopidy album images before requesting album images from LastFM
+Removed clear_current_track parameter from mopidy.stop() method for Mopidy 0.20 compatibility
+
+0.4.2 (2014-11-17)
+------------------
+
+Fixed accidentally disabled error logger
+
+0.4.1 (2014-11-16)
+------------------
+
+Added random toggle switch
+Fixed browsing of playlists (David Tischler)
+Reverted interpolation of track position due to instability
+Search query is passed to mopidy as an array to support new Spotify backend
 
 0.4.0 (2014-10-10)
 ------------------
