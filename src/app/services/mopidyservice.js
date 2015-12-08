@@ -96,7 +96,7 @@ angular.module('moped.mopidy', [])
         this.start();
       },
       getPlaylists: function() {
-        return wrapMopidyFunc("mopidy.playlists.getPlaylists", this)();
+        return wrapMopidyFunc("mopidy.playlists.asList", this)();
       },
       getPlaylist: function(uri) {
         return wrapMopidyFunc("mopidy.playlists.lookup", this)({ uri: uri });
@@ -146,7 +146,7 @@ angular.module('moped.mopidy', [])
       playTrack: function(track, surroundingTracks) {
         var self = this;
 
-        // Check if a playlist change is required. If not cust change the track.
+        // Check if a playlist change is required. If not just change the track.
         if (self.currentTlTracks.length > 0) {
           var trackUris = _.pluck(surroundingTracks, 'uri');
           var currentTrackUris = _.map(self.currentTlTracks, function(tlTrack) {
@@ -217,6 +217,9 @@ angular.module('moped.mopidy', [])
       },
       setRandom: function (isRandom) {
         return wrapMopidyFunc("mopidy.tracklist.setRandom", this)([ isRandom ]);
+      },
+      getCurrentTrackList: function () {
+        return wrapMopidyFunc("mopidy.tracklist.getTracks", this)();
       }
     };
   });
